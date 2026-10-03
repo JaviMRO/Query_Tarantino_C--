@@ -303,6 +303,9 @@ build/release-mongo/bin/query_benchmarks
 python3 scripts/compare_results.py                                     # report: benchmarks/report/comparison.md
 ```
 
+A full run with 100, 300 and 1 000 books took **about 51 minutes** on an Intel Core Ultra 9 275HX laptop under WSL 2
+(measured). The analysis of the C++ results is in [ANALYSIS.md](ANALYSIS.md).
+
 ## Differences from the Java implementation
 
 The behavior is the one of the SPEC, checked on the same books: on 119 Gutenberg books, the datalake, the

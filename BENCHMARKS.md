@@ -161,6 +161,8 @@ chart per metric if matplotlib is installed.
 on the same machine, into `benchmarks/results/` and run the script again: every table then has a row per
 language and structure, and the winners are chosen per language.
 
+The analysis of the C++ results is in [ANALYSIS.md](ANALYSIS.md).
+
 ## Output files
 
 Everything is under `benchmarks/`, which is not versioned:
