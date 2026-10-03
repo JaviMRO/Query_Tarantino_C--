@@ -1,0 +1,6 @@
+# SPEC §1: every text file is UTF-8 with LF line endings, on every operating system, so that the workload and the
+# conformance cases read the same everywhere
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
