@@ -2,6 +2,7 @@
 
 #include "crawler/tests/benchmarking/support/environment/BenchmarkOptions.hpp"
 
+#include <concepts>
 #include <cstdint>
 #include <functional>
 #include <memory>
@@ -28,12 +29,11 @@ enum class TimeUnit {
 /// Keeps the results of the measured calls observable, as JMH's Blackhole, so that the compiler cannot drop the work.
 class Blackhole {
 public:
-    void consume(std::uint64_t value) {
-        sink_ = sink_ + value;
-    }
-
-    void consume(bool value) {
-        consume(static_cast<std::uint64_t>(value));
+    /// Any integer or bool. One overload per type would make some calls ambiguous on macOS, where std::size_t
+    /// (unsigned long) is not std::uint64_t (unsigned long long), as it is on Linux and Windows.
+    template <std::integral Value>
+    void consume(Value value) {
+        sink_ = sink_ + static_cast<std::uint64_t>(value);
     }
 
 private:
